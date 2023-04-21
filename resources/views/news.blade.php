@@ -819,7 +819,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-xl-8">
-                        @if(isset($news) && !empty($news))
+                        @if(isset($news[0]) && !empty($news[0]))
+
                         @foreach($news as $new)
                             @include('components.news_card_list')
                         @endforeach

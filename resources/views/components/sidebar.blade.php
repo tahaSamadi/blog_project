@@ -7,7 +7,7 @@
             <ul>
                 @foreach($categories as $category)
                     <li class="cat-item">
-                        <a href="{{route('news.show_all',['news_cat'=>$category["slug"]])}}" class="inner">
+                        <a href="{{route('news.show_all',['news_cat'=>$category["slug"],'q'=>request()->get('q')])}}" class="inner">
                             <div class="thumbnail">
                                 @if(isset($category["pic"]) && !empty($category["pic"]))
                                     <img src="/images/{{$category["pic"]}}" alt="{{$category["slug"]}}">
@@ -29,17 +29,17 @@
     <!-- Start Single Widget  -->
     <div class="axil-single-widget widget widget_search mb--30">
         <h5 class="widget-title">جستجو</h5>
-        <form action="#">
+        <form action="{{route("news.show_all")}}">
             <div class="axil-search form-group">
                 <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
-                <input type="text" class="form-control" placeholder="جستجو">
+                <input type="text" value="{{request()->get('q')}}" class="form-control" placeholder="جستجو" name="q">
             </div>
         </form>
     </div>
     <!-- End Single Widget  -->
 
     <!-- Start Single Widget  -->
-    @if(!empty($news[0]->hit_news()))
+    @if(isset($news[0]) && !empty($news[0]->hit_news()))
     <div class="axil-single-widget widget widget_postlist mb--30">
         <h5 class="widget-title">بهترین های هفته</h5>
         <!-- Start Post List  -->

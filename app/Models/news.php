@@ -6,9 +6,9 @@ use App\Models\trait\date_slug;
 use App\Models\trait\persian_slug;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class news extends Model
 {
     use HasFactory,persian_slug,date_slug;
@@ -29,7 +29,10 @@ class news extends Model
         $dayToCheck = Carbon::now()->subDays($dayAgo);
         return news::take(3)->where('cat_id',$this->cat_id)->whereDate('created_at','>=',$dayToCheck)->orderBy('hit','desc')->get();
     }
-    public function filter(){
-
+    public function scopeFilter(Builder $builder,array $params=[]){
+        if(isset($params["q"]) && !empty($params['q'])){
+            $builder->orWhere('title', 'like', '%' . $params["q"] . '%');
+        }
+        return $builder;
     }
 }
