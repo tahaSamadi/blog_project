@@ -805,9 +805,9 @@
                         <div class="inner text-right">
                         @if(isset($news_cat["title"]) && !empty($news_cat["title"]))
                             <h1 class="page-title"><a href="{{route('news.show_all',['news_cat'=>$news_cat["slug"]])}}">{{$news_cat["title"]}}</a></h1>
-                            @else
+                        @else
                             <h1 class="page-title"><a href="{{route('news.show_all')}}">اخبار</a></h1>
-                            @endif
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -819,232 +819,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-xl-8">
-                        <!-- Start Post List  -->
-                        <div class="content-block post-list-view mt--30">
-                            <div class="post-thumbnail">
-                                <a href="post-details.html">
-                                    <img src="/images/post-images/post-list-01.jpg" alt="Post Images">
-                                </a>
-                                <a class="video-popup icon-color-secondary size-medium position-top-center" href="post-details.html"><span class="play-icon"></span></a>
-                            </div>
-                            <div class="post-content">
-                                <div class="post-cat">
-                                    <div class="post-cat-list">
-                                        <a class="hover-flip-item-wrapper" href="#">
-                                            <span class="hover-flip-item">
-                                                <span data-text="کسب و کار">کسب و کار</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h4 class="title"><a href="post-details.html">1 ابزاری که به تیم های راه دور کمک می کند تا بهتر همکاری کنند</a></h4>
-                                <div class="post-meta-wrapper">
-                                    <div class="post-meta">
-                                        <div class="content">
-                                            <h6 class="post-author-name">
-                                                <a class="hover-flip-item-wrapper" href="author.html">
-                                                    <span class="hover-flip-item">
-                                                        <span data-text="رهبی خان">رهبی خان</span>
-                                                    </span>
-                                                </a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>17 بهمن , 1399</li>
-                                                <li>3 دقیقه زمان مطالعه</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <ul class="social-share-transparent justify-content-end">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Post List  -->
+                        @if(isset($news) && !empty($news))
+                        @foreach($news as $new)
+                            @include('components.news_card_list')
+                        @endforeach
 
-                        <!-- Start Post List  -->
-                        <div class="content-block post-list-view mt--30">
-                            <div class="post-thumbnail">
-                                <a href="post-details.html">
-                                    <img src="/images/post-images/post-list-02.jpg" alt="Post Images">
-                                </a>
-                            </div>
-                            <div class="post-content">
-                                <div class="post-cat">
-                                    <div class="post-cat-list">
-                                        <a class="hover-flip-item-wrapper" href="#">
-                                            <span class="hover-flip-item">
-                                                <span data-text="برنامه نویسی">برنامه نویسی</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h4 class="title"><a href="post-details.html">طراحی سنتی ما را در دوران COVID-19 نجات نخواهد داد</a></h4>
-                                <div class="post-meta-wrapper">
-                                    <div class="post-meta">
-                                        <div class="content">
-                                            <h6 class="post-author-name">
-                                                <a class="hover-flip-item-wrapper" href="author.html">
-                                                    <span class="hover-flip-item">
-                                                        <span data-text="رهبی خان">رهبی خان</span>
-                                                    </span>
-                                                </a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>17 بهمن , 1399</li>
-                                                <li>3 دقیقه زمان مطالعه</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <ul class="social-share-transparent justify-content-end">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="d-flex justify-content-center mt-5">
+                            {!! $news->links() !!}
                         </div>
-                        <!-- End Post List  -->
-
-                        <!-- Start Post List  -->
-                        <div class="content-block post-list-view mt--30">
-                            <div class="post-thumbnail">
-                                <a href="post-details.html">
-                                    <img src="assets/images/post-images/post-list-03.jpg" alt="Post Images">
-                                </a>
-                            </div>
-                            <div class="post-content">
-                                <div class="post-cat">
-                                    <div class="post-cat-list">
-                                        <a class="hover-flip-item-wrapper" href="#">
-                                            <span class="hover-flip-item">
-                                                <span data-text="گرافیست">گرافیست</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h4 class="title"><a href="post-details.html">امنیت فقط یک مشکل فناوری نیست، بلکه در مورد طراحی نیز هست</a></h4>
-                                <div class="post-meta-wrapper">
-                                    <div class="post-meta">
-                                        <div class="content">
-                                            <h6 class="post-author-name">
-                                                <a class="hover-flip-item-wrapper" href="author.html">
-                                                    <span class="hover-flip-item">
-                                                        <span data-text="رهبی خان">رهبی خان</span>
-                                                    </span>
-                                                </a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>17 بهمن , 1399</li>
-                                                <li>3 دقیقه زمان مطالعه</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <ul class="social-share-transparent justify-content-end">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Post List  -->
-
-                        <!-- Start Post List  -->
-                        <div class="content-block post-list-view mt--30">
-                            <div class="post-thumbnail">
-                                <a href="post-details.html">
-                                    <img src="/images/post-images/post-list-04.jpg" alt="Post Images">
-                                </a>
-                            </div>
-                            <div class="post-content">
-                                <div class="post-cat">
-                                    <div class="post-cat-list">
-                                        <a class="hover-flip-item-wrapper" href="#">
-                                            <span class="hover-flip-item">
-                                                <span data-text="امنیت و شبکه">امنیت و شبکه</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h4 class="title"><a href="post-details.html">جدید: الگوهای دست آزاد، ساخته شده برای کل تیم</a></h4>
-                                <div class="post-meta-wrapper">
-                                    <div class="post-meta">
-                                        <div class="content">
-                                            <h6 class="post-author-name">
-                                                <a class="hover-flip-item-wrapper" href="author.html">
-                                                    <span class="hover-flip-item">
-                                                        <span data-text="رهبی خان">رهبی خان</span>
-                                                    </span>
-                                                </a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>17 بهمن , 1399</li>
-                                                <li>3 دقیقه زمان مطالعه</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <ul class="social-share-transparent justify-content-end">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Post List  -->
-
-                        <!-- Start Post List  -->
-                        <div class="content-block post-list-view mt--30">
-                            <div class="post-thumbnail">
-                                <a href="post-details.html">
-                                    <img src="/images/post-images/post-list-05.jpg" alt="Post Images">
-                                </a>
-                            </div>
-                            <div class="post-content">
-                                <div class="post-cat">
-                                    <div class="post-cat-list">
-                                        <a class="hover-flip-item-wrapper" href="#">
-                                            <span class="hover-flip-item">
-                                                <span data-text="گرافیست">گرافیست</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h4 class="title"><a href="post-details.html">جدید: الگوهای دست آزاد، ساخته شده برای کل تیم</a></h4>
-                                <div class="post-meta-wrapper">
-                                    <div class="post-meta">
-                                        <div class="content">
-                                            <h6 class="post-author-name">
-                                                <a class="hover-flip-item-wrapper" href="author.html">
-                                                    <span class="hover-flip-item">
-                                                        <span data-text="رهبی خان">رهبی خان</span>
-                                                    </span>
-                                                </a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>17 بهمن , 1399</li>
-                                                <li>3 دقیقه زمان مطالعه</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <ul class="social-share-transparent justify-content-end">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Post List  -->
-
+                        @else
+                            <div class="alert alert-danger">نتیحه ای یافت نشد</div>
+                        @endif
                     </div>
                     <div class="col-lg-4 col-xl-4 mt_md--40 mt_sm--40">
                         <div class="sidebar-inner">

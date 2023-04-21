@@ -1,3 +1,4 @@
+
 <div class="sidebar-inner">
 
     <!-- Start Single Widget  -->
@@ -38,73 +39,38 @@
     <!-- End Single Widget  -->
 
     <!-- Start Single Widget  -->
+    @if(!empty($news[0]->hit_news()))
     <div class="axil-single-widget widget widget_postlist mb--30">
         <h5 class="widget-title">بهترین های هفته</h5>
         <!-- Start Post List  -->
         <div class="post-medium-block">
-
-            <!-- Start Single Post  -->
+            @foreach($news[0]->hit_news() as $new)
             <div class="content-block post-medium mb--20">
                 <div class="post-thumbnail">
                     <a href="post-details.html">
-                        <img src="/images/small-images/blog-sm-01.jpg" alt="Post Images">
+                        @if(isset($new["pic"]) && !empty($new["pic"]))
+                        <img src="/images/{{$new["pic"]}}" alt="Post Images">
+                        @else
+                        <img src="/no_image/no_image(50x50).jpg" alt="Post Images">
+                        @endif
                     </a>
                 </div>
                 <div class="post-content">
-                    <h6 class="title"><a href="post-details.html">تغییر ناگهانی در هیات مدیره استقلال </a></h6>
+                    <h6 class="title"><a href="post-details.html">{{$new["title"]}}</a></h6>
                     <div class="post-meta">
                         <ul class="post-meta-list">
-                            <li>14 مهر, 1400</li>
-                            <li> 300 نفر بازدید</li>
+                            <li>{{$new->getformatTimeAttribute()}}</li>
+                            <li> {{$new["hit"]}} نفر بازدید</li>
+                            <li>{{$new->news_cat->title}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- End Single Post  -->
-
-            <!-- Start Single Post  -->
-            <div class="content-block post-medium mb--20">
-                <div class="post-thumbnail">
-                    <a href="post-details.html">
-                        <img src="/images/small-images/blog-sm-02.jpg" alt="Post Images">
-                    </a>
-                </div>
-                <div class="post-content">
-                    <h6 class="title"><a href="post-details.html">نخستین ویدئو کامل از مک بوک پرو</a>
-                    </h6>
-                    <div class="post-meta">
-                        <ul class="post-meta-list">
-                            <li>14 مهر, 1400</li>
-                            <li> 300 نفر بازدید</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Post  -->
-
-            <!-- Start Single Post  -->
-            <div class="content-block post-medium mb--20">
-                <div class="post-thumbnail">
-                    <a href="post-details.html">
-                        <img src="/images/small-images/blog-sm-03.jpg" alt="Post Images">
-                    </a>
-                </div>
-                <div class="post-content">
-                    <h6 class="title"><a href="post-details.html">محبوب‌ترین زبان برنامه‌نویسی کدام است؟</a></h6>
-                    <div class="post-meta">
-                        <ul class="post-meta-list">
-                            <li>14 مهر, 1400</li>
-                            <li> 300 نفر بازدید</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Post  -->
-
+            @endforeach
         </div>
         <!-- End Post List  -->
-
     </div>
+    @endif
     <!-- End Single Widget  -->
 
     <!-- Start Single Widget  -->

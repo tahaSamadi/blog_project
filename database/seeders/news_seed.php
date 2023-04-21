@@ -14,13 +14,17 @@ class news_seed extends Seeder
     public function run(): void
     {
         $faker=\Faker\Factory::create('fa_IR');
+        for ($i=1;$i<=27;$i++){
+            $address_img_banner='post-images/post-list-0'.rand(1,4).'.jpg';
+            $address_img='post-images/post-list-0'.rand(1,4).'.jpg';
             news::create([
-                'title'=>'عنوان شماره 1',
-                'pic'=>'post-single/post-md-01.jpg',
-                'pic_banner'=>'post-single/post-md-01.jpg',
+                'title'=>'عنوان شماره '.$i.' ',
+                'pic'=>$address_img_banner,
+                'pic_banner'=>$address_img,
                 'meta_tags'=>'کلمه کلیدی 1 , کلمه کلیدی 3',
-                'description'=>$faker->realText(300),
+                'description'=>$faker->realText(1000),
                 'cat_id'=>\App\Models\news_cat::all()->random()->id,
             ]);
+        }
     }
 }
